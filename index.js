@@ -1,9 +1,12 @@
 const express = require("express");
 const app = express();
-const cors = require("cors")
-const port =process.env.port || 5000;
+const cors = require("cors");
 const UserRouter = require("./db/router/users");
 const PostRouter = require("./db/router/posts");
+const dotenv = require("dotenv");
+dotenv.config();
+
+const port = process.env.PORT || 8000;
 
 app.use(express.json());
 app.use(cors());
@@ -15,7 +18,6 @@ require("./db/conn");
 app.use(UserRouter);
 app.use(PostRouter);
 
-
-app.listen(port,()=>{
-    console.log("server is live on "+port);
-})
+app.listen(port, () => {
+  console.log("server is live on " + port);
+});
